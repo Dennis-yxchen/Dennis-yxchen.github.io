@@ -1,11 +1,11 @@
-<!-- ---
+---
 permalink: /
-title: "Academic Pages is a ready-to-fork GitHub Pages template for academic personal websites"
+title: "Academic Pages"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
---- -->
+---
 About me
 ===
 Welcome to my personal page. I'm Chen Yuxuan, an undergraduate student at the University of Hong Kong in the Department of Computer Science.
