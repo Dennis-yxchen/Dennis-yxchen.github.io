@@ -8,9 +8,9 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Your Name / Site Title"
+title                    : "Welcome"
 title_separator          : "-"
-name                     : &name "Your Name"
+name                     : &name "Yuxuan Chen"
 description              : &description "personal description"
 url                      : https://Dennis-yxchen.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -24,7 +24,7 @@ author:
   avatar           : "profile.png"
   name             : "Yuxuan Chen"
   pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
+  bio              : "Come and see the world in my mind"
   location         : "Earth"
   employer         : "The University of Hong Kong"
   uri              : # URL
