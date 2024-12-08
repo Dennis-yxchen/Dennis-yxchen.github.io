@@ -27,6 +27,6 @@ Research experience
   *Mar 2024 – Sept 2024*  
   - Designed An agent to simulate human-like daily activities  
   - Designed environments for evaluating the agent  
-  - Demonstrated that the Desire-driven autonomous agent significantly outperforms baseline agents in generating realistic activity sequences, as evaluated by GPT-4 and human annotators
-  - Authored a paper based on this work, which is currently under submission
+  - Our agent significantly outperforms baseline agents in generating realistic activity sequences, as evaluated by GPT-4 and human annotators
+  - paper is currently under submission
   
