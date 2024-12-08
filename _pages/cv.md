@@ -11,35 +11,8 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
-
-Work experience
-======
-* Spring 2024: Academic Pages Collaborator
-  * Github University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
-
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
-
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-  
-Skills
-======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* The University of Hong Kong, School of Computing and Data Science, 2021-present
+  * Major: Computer science
 
 Publications
 ======
@@ -47,18 +20,13 @@ Publications
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
-Talks
+Research experience
 ======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
+  **LLM Agents to simulate human action**  
+  *Peking University, Beijing Institute for General Artificial Intelligence (BIGAI)*  
+  *Mar 2024 – Sept 2024*  
+  - Designed An agent to simulate human-like daily activities  
+  - Designed environments for evaluating the agent  
+  - Demonstrated that the Desire-driven autonomous agent significantly outperforms baseline agents in generating realistic activity sequences, as evaluated by GPT-4 and human annotators
+  - Authored a paper based on this work, which is currently under submission
   
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
