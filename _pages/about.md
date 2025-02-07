@@ -7,8 +7,25 @@ redirect_from:
   - /about.html
 ---
 
-Welcome to my personal page. I'm Chen Yuxuan, an undergraduate student at <a href="https://www.hku.hk/">The University of Hong Kong</a> in the <a href="https://www.cs.hku.hk/">Department of Computer Science</a>. I was fortunate to be advised under the mentorship of Prof. <a href="https://fangweizhong.xyz/">Fangwei Zhong</a> in the <a href="https://eng.bigai.ai/">Beijing Institute for General Artificial Intelligence (BIGAI)</a> about simulating human behaviours and activities by Large language model(LLM). Besides, I also conducted a project about benchmarking for graph augmentation methods in <a href="https://cmlr.pku.edu.cn/"> Center for Machine Learning Research(CMLR)</a> supervised by Prof. <a href="https://zwt233.github.io/"> Wentao Zhang</a> during exchange program at <a href="https://www.pku.edu.cn/"> Peking University (PKU)</a>.
+Welcome to my personal page. I'm Chen Yuxuan, an undergraduate student at <a href="https://www.hku.hk/">The University of Hong Kong (HKU)</a> in the <a href="https://www.cs.hku.hk/">Department of Computer Science</a>. I was fortunate to be mentored by Prof. <a href="https://fangweizhong.xyz/">Fangwei Zhong</a> in the <a href="https://eng.bigai.ai/">Beijing Institute for General Artificial Intelligence (BIGAI)</a> about simulating human behaviors and activities by Large Language Models (LLMs). Additionally,during exchange program at <a href="https://www.pku.edu.cn/"> Peking University (PKU)</a>, I also conducted a project on benchmarking for graph augmentation methods at <a href="https://cmlr.pku.edu.cn/"> Center for Machine Learning Research(CMLR)</a> under the supervision of Prof. <a href="https://zwt233.github.io/"> Wentao Zhang</a>.
+Feel free to contact <a href="mailto:u3592844@connect.hku.hk">me</a>. :-)
 
-In my previous years of study, I have tried diverse aspects including machine learning in bioinformatics, graph machine learning, and also large language model agents. Feel free to contact me.
 
-Research interests:
+---
+Current research interests
+---
+- Equipping foundation models with advanced capabilities (including social interaction, planning)
+- Enhancing models' abilities like reasoning and problem-solving through methods such as multi-agent systems and new computational approaches
+- Applying power of AI in real-world scenarios
+
+In the past, I also conducted some research on:
+- Graph Machine Learning (augmentation methods)
+- Machine Learning in Bioinformatics (infection classification)
+- Large Language Model Agents (Desire-Driven Agent, D2A)
+
+---
+News
+---
+- [01/2025] Our work about <a href="https://arxiv.org/abs/2412.06435"> Desire-Driven Agent (D2A)</a> has been accepted by ICLR’25.
+- [12/2024] Our new work about Desire-driven autonomous agents (D2A) released! Click <a href="https://sites.google.com/view/desire-driven-autonomy?usp=sharing"> here</a> for more details.
+- [12/2024] Our team (BIGAI NLCo) ranked #9 in the NeurIPS 2024 Concordia Contest.
