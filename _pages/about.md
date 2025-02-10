@@ -13,7 +13,7 @@ Feel free to contact <a href="mailto:u3592844@connect.hku.hk">me</a>. :-)
 
 ---
 Current research interests
----
+===
 - Equipping foundation models with advanced capabilities (including social interaction, planning)
 - Enhancing models' abilities like reasoning and problem-solving through methods such as multi-agent systems and new computational approaches
 - Applying power of AI in real-world scenarios
@@ -24,8 +24,9 @@ In the past, I also conducted some research on:
 - Large Language Model Agents (Desire-Driven Agent, D2A)
 
 ---
+
 News
----
+===
 - [01/2025] Our work about <a href="https://arxiv.org/abs/2412.06435"> Desire-Driven Agent (D2A)</a> has been accepted by ICLR’25.
 - [12/2024] Our new work about Desire-driven autonomous agents (D2A) released! Click <a href="https://sites.google.com/view/desire-driven-autonomy?usp=sharing"> here</a> for more details.
 - [12/2024] Our team (BIGAI NLCo) ranked #9 in the NeurIPS 2024 Concordia Contest.
