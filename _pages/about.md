@@ -8,7 +8,7 @@ redirect_from:
 ---
 
 Welcome to my personal page. I'm Chen Yuxuan, an undergraduate student at <a href="https://www.hku.hk/">The University of Hong Kong (HKU)</a> in the <a href="https://www.cs.hku.hk/">Department of Computer Science</a>. I was fortunate to be mentored by Prof. <a href="https://fangweizhong.xyz/">Fangwei Zhong</a> in the <a href="https://eng.bigai.ai/">Beijing Institute for General Artificial Intelligence (BIGAI)</a> about simulating human behaviors and activities by Large Language Models (LLMs). Additionally,during exchange program at <a href="https://www.pku.edu.cn/"> Peking University (PKU)</a>, I also conducted a project on benchmarking for graph augmentation methods at <a href="https://cmlr.pku.edu.cn/"> Center for Machine Learning Research(CMLR)</a> under the supervision of Prof. <a href="https://zwt233.github.io/"> Wentao Zhang</a>.
-Feel free to contact <a href="mailto:u3592844@connect.hku.hk">me</a>. :-)
+Feel free to contact <a href="mailto:u3592844@connect.hku.hk">me</a> :-)
 
 
 ---
