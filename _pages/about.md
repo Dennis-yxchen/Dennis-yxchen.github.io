@@ -31,3 +31,16 @@ News
 - [01/2025] Our work about <a href="https://arxiv.org/abs/2412.06435"> Desire-Driven Agent (D2A)</a> has been accepted by ICLR’25.
 - [12/2024] Our new work about Desire-driven autonomous agents (D2A) released! Click <a href="https://sites.google.com/view/desire-driven-autonomy?usp=sharing"> here</a> for more details.
 - [12/2024] Our team (BIGAI NLCo) ranked #9 in the NeurIPS 2024 Concordia Contest.
+
+---
+
+Friends
+===
+I would like to express my gratitude to my friends because of their support.
+Links to their personal websites are listed below (Randomly ordered).
+- <a href="https://heentong.github.io/"> Entong He</a>
+- <a href="https://yuyueminaustin.github.io/"> Yuemin Yu</a>
+- <a href="https://yiding-w.github.io//"> Yiding Wang</a>
+- <a href="https://helloelwin.github.io/"> Yaowen Ye</a>
+- <a href="https://lorduky.github.io/"> Zheyu Fan</a>
+- <a href="https://www.linkedin.com/in/lovestaiga-199257246/"> Yichuan Song</a>
