@@ -1,32 +1,50 @@
-@config "../tailwind.config.ts";
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Tailwind v4 配置区域 
+  在这里定义你的琥珀色系设计语言
+*/
+@theme {
+  /* 颜色定义 */
+  --color-retro-bg: #FEFDF5;
+  --color-retro-surface: #FFFBEB;
+  --color-retro-primary: #FFBF00;
+  --color-retro-ink: #4A3B2A;
+  --color-retro-dim: #8C7E6A;
+  --color-retro-accent: #0D9488;
+  --color-retro-signal: #DC2626;
 
+  /* 字体定义 - 对应 layout.tsx 中的 variable */
+  --font-display: var(--font-space-grotesk), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+
+  /* 自定义阴影 */
+  --shadow-hard: 4px 4px 0px 0px rgba(74, 59, 42, 0.1);
+  --shadow-hard-sm: 2px 2px 0px 0px rgba(74, 59, 42, 0.1);
+
+  /* 背景纹理 - 注意：CSS 中直接写 url 即可，不需要复杂的转义 */
+  --background-image-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E");
+}
+
+/* 基础样式层 */
 @layer base {
-  /* body {
-    background-color: #FEFDF5;
-    color: #4A3B2A;
-    font-family: var(--font-jetbrains-mono), monospace;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
-  } */
   body {
-    /* 使用 tailwind 变量，而不是硬编码 hex 值 */
-    @apply bg-retro-bg text-retro-ink font-mono antialiased overflow-x-hidden;
+    background-color: var(--color-retro-bg);
+    color: var(--color-retro-ink);
+    font-family: var(--font-mono);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
-  /* 自定义滚动条 - 极简方块风格 */
+  ::selection {
+    background-color: var(--color-retro-ink);
+    color: var(--color-retro-primary);
+  }
+
   ::-webkit-scrollbar {
     width: 8px;
   }
-  /* ::-webkit-scrollbar-track {
-    background-color: #FEFDF5;
-  } */
   ::-webkit-scrollbar-track {
-    background-color: theme('colors.retro.bg'); /* 使用变量 */
+    background-color: var(--color-retro-bg);
   }
   ::-webkit-scrollbar-thumb {
     background-color: rgba(74, 59, 42, 0.2);
@@ -36,36 +54,32 @@
   }
 }
 
+/* 工具类层 */
 @layer utilities {
-  /* 定义选中文字的颜色：反转色，很有复古终端感 */
-  .selection-amber {
-    ::selection {
-      background-color: #4A3B2A;
-      color: #FFBF00;
-    }
-  }
-
-  /* 一个辅助类，用于制造 HUD 风格的边框盒子 */
   .hud-border {
-    border: 1px solid rgba(74, 59, 42, 0.2);
     position: relative;
+    border: 1px solid color-mix(in srgb, var(--color-retro-ink), transparent 80%);
   }
 
-  /* 角落的装饰性切角 (用伪元素实现) */
-  .corner-brackets::before {
-    content: '';
-    position: absolute;
-    top: -1px; left: -1px;
-    width: 8px; height: 8px;
-    border-top: 2px solid #4A3B2A;
-    border-left: 2px solid #4A3B2A;
-  }
-  .corner-brackets::after {
-    content: '';
-    position: absolute;
-    bottom: -1px; right: -1px;
-    width: 8px; height: 8px;
-    border-bottom: 2px solid #4A3B2A;
-    border-right: 2px solid #4A3B2A;
+  /* v4 也可以直接嵌套写伪元素
+     这里的 apply 需要指向我们在 theme 里定义好的变量
+  */
+  .corner-brackets {
+    &::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: -1px;
+      width: 8px; height: 8px;
+      border-top: 2px solid var(--color-retro-ink);
+      border-left: 2px solid var(--color-retro-ink);
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; right: -1px;
+      width: 8px; height: 8px;
+      border-bottom: 2px solid var(--color-retro-ink);
+      border-right: 2px solid var(--color-retro-ink);
+    }
   }
 }
