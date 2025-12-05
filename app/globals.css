@@ -1,8 +1,6 @@
 @import "tailwindcss";
 
-/* Tailwind v4 配置区域 
-  在这里定义你的琥珀色系设计语言
-*/
+/* Tailwind v4 配置区域 */
 @theme {
   /* 颜色定义 */
   --color-retro-bg: #FEFDF5;
@@ -13,7 +11,7 @@
   --color-retro-accent: #0D9488;
   --color-retro-signal: #DC2626;
 
-  /* 字体定义 - 对应 layout.tsx 中的 variable */
+  /* 字体定义 */
   --font-display: var(--font-space-grotesk), sans-serif;
   --font-mono: var(--font-jetbrains-mono), monospace;
 
@@ -21,8 +19,26 @@
   --shadow-hard: 4px 4px 0px 0px rgba(74, 59, 42, 0.1);
   --shadow-hard-sm: 2px 2px 0px 0px rgba(74, 59, 42, 0.1);
 
-  /* 背景纹理 - 注意：CSS 中直接写 url 即可，不需要复杂的转义 */
-  --background-image-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E");
+  /* --- 背景纹理定义 --- */
+  
+  /* 1. CRT 扫描线 (Scanlines) - 横向条纹 */
+  /* 这里调整为 4px 一个循环，50%透明，50%有一点点颜色 */
+  --bg-scanlines: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(74, 59, 42, 0.03) 50% /* 极淡的线条，不干扰阅读 */
+  );
+  
+  /* 2. 屏幕暗角 (Vignette) - 四周变暗 */
+  --bg-vignette: radial-gradient(
+    circle at center,
+    transparent 60%,
+    rgba(74, 59, 42, 0.12) 120% /* 稍微加深一点点，让它更明显 */
+  );
+
+  /* 3. 零星噪点 (Noise) */
+  /* 使用 SVG 滤镜生成随机颗粒 */
+  --bg-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
 }
 
 /* 基础样式层 */
@@ -33,6 +49,24 @@
     font-family: var(--font-mono);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+
+    /* --- 图层叠加顺序 (关键) --- */
+    /* Layer 1 (最上层): 暗角 (压住所有东西，统一色调)
+       Layer 2 (中间层): 扫描线 (模拟屏幕表面的纹理)
+       Layer 3 (最下层): 噪点 (模拟底层的材质/电子杂讯)
+    */
+    background-image: 
+      var(--bg-vignette), 
+      var(--bg-scanlines),
+      var(--bg-noise);
+
+    /* --- 对应的尺寸 --- */
+    background-size: 
+      100% 100%,     /* Vignette: 铺满 */
+      100% 6px,      /* Scanlines: 4px 循环 */
+      200px 200px;   /* Noise: 200px 循环 (太小会显得重复，太大会模糊) */
+
+    background-attachment: fixed;
   }
 
   ::selection {
@@ -59,11 +93,11 @@
   .hud-border {
     position: relative;
     border: 1px solid color-mix(in srgb, var(--color-retro-ink), transparent 80%);
+    /* 给卡片加一点背景，防止文字直接压在复杂的背景纹理上看不清 */
+    background-color: rgba(254, 253, 245, 0.6); 
+    backdrop-filter: blur(2px);
   }
 
-  /* v4 也可以直接嵌套写伪元素
-     这里的 apply 需要指向我们在 theme 里定义好的变量
-  */
   .corner-brackets {
     &::before {
       content: '';
