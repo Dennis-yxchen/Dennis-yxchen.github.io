@@ -12,10 +12,19 @@ export default function HomePage() {
         {/* 左侧：文字信息 */}
         <div className="flex-1 space-y-6">
           <div className="space-y-2">
-            <h1 className="text-5xl md:text-6xl font-display font-bold tracking-tighter text-retro-ink uppercase chromatic-text">
+            {/* 1. 给 h1 加上 opacity-0 */}
+            <h1 
+              className="text-5xl md:text-6xl font-display font-bold tracking-tighter text-retro-ink uppercase chromatic-text opacity-0 animate-retro-fade" 
+              style={{ animationDelay: '0.15s' }}
+            >
               {siteConfig.profile.name}
             </h1>
-            <p className="text-xl font-mono text-retro-primary tracking-tight">
+
+            {/* 2. 给 p 加上 opacity-0，并移除 style 里多余的 opacity 和 fillMode (CSS类里已经有了) */}
+            <p 
+              className="text-xl font-mono text-retro-primary tracking-tight opacity-0 animate-retro-fade" 
+              style={{ animationDelay: '0.35s' }}
+            >
               &gt; {siteConfig.profile.title}
             </p>
           </div>

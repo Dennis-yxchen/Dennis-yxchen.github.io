@@ -61,8 +61,11 @@ export function Sidebar() {
               <span>{item.label}</span>
 
               {/* 装饰：激活状态下右侧显示一个小指示灯 */}
-              {isActive && (
+              {/* {isActive && (
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-retro-ink animate-pulse" />
+              )} */}
+              {isActive && (
+                <span className="absolute right-3 top-1/2 -translate-y-1/2 w-2 h-2 bg-retro-oxide rounded-full shadow-[0_0_8px_var(--color-retro-oxide)] animate-blink-slow opacity-80" />
               )}
             </Link>
           );

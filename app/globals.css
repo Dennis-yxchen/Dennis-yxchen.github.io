@@ -24,6 +24,8 @@
   --color-terminal-teal: #78B4AC;  /* 稍微褪色的青 */
   --color-terminal-gold: #Deb841;  /* 芥末黄/金 */
   --color-terminal-red: #9B3833;   /* 氧化铁红/褪色红 */
+  /* 3. 新增一个氧化红颜色（比 Signal Red 更暗、更旧） */
+  --color-retro-oxide: #B85C50;
 
   /* --- 背景纹理定义 --- */
   
@@ -45,6 +47,7 @@
   /* 3. 零星噪点 (Noise) */
   /* 使用 SVG 滤镜生成随机颗粒 */
   --bg-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+
 }
 
 /* 基础样式层 */
@@ -146,5 +149,57 @@
   .btn-press:active {
     transform: translate(2px, 2px);
     box-shadow: 1px 1px 0px 0px var(--color-retro-ink);
+  }
+}
+
+/* ... 之前的代码 ... */
+
+/* 新增：自定义动画关键帧 */
+@keyframes retro-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(8px); /* 稍微向上位移，模拟数据上载 */
+    filter: blur(2px); /* 刚出现时有点模糊，像聚焦过程 */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes breathing-light {
+  0%, 100% { opacity: 0.4; transform: scale(0.95); } /* 暗的时候稍微缩小 */
+  50% { opacity: 1; transform: scale(1.05); }        /* 亮的时候稍微膨胀（光晕感） */
+}
+
+@keyframes scanline-scan {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 0% 100%; }
+}
+
+/* 实用工具类 */
+@layer utilities {
+  /* ... 之前的类 ... */
+
+  /* 页面切换动画类 */
+  .animate-retro-fade {
+    /* 0.4秒完成，使用 ease-out 让结束时更平缓 */
+    animation: retro-fade-in 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  /* 2. 重写闪烁类：更慢（3s），更平滑 (ease-in-out) */
+  .animate-blink-slow {
+    animation: breathing-light 3s ease-in-out infinite;
+  }
+
+  /* 缓慢旋转 (用于音乐图标) */
+  .animate-spin-slow {
+    animation: spin 3s linear infinite;
   }
 }
