@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 // 1. 导航栏配置
 export interface NavItem {
   label: string;   // 显示的文字 (如 "RESEARCH")
-  id: string;      // 对应的 HTML ID (用于锚点跳转，如 "section-research")
+  path: string;    // 路由路径 (如 "/research")
   icon?: ReactNode; // 可选的图标
 }
 

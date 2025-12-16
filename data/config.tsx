@@ -23,10 +23,10 @@ export const siteConfig: SiteConfig = {
   // === 2. 导航栏 ===
   // 想要添加新板块？在这里加一行即可
   navItems: [
-    { label: "ID.CARD", id: "hero", icon: <Cpu size={16} /> },
-    { label: "RESEARCH", id: "research", icon: <Layers size={16} /> },
-    { label: "PUBLICATIONS", id: "publications", icon: <FileText size={16} /> },
-    { label: "MISC.DATA", id: "misc", icon: <Radio size={16} /> },
+    { label: "ID.CARD", path: "/", icon: <Cpu size={18} /> }, // 首页
+    { label: "RESEARCH", path: "/research", icon: <Layers size={18} /> },
+    { label: "PUBLICATIONS", path: "/publications", icon: <FileText size={18} /> },
+    { label: "MISC.DATA", path: "/misc", icon: <Radio size={18} /> },
   ],
 
   // === 3. 研究项目 (Methodology) ===

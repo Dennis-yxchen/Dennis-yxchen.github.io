@@ -1,45 +1,65 @@
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { siteConfig } from "@/data/config";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <>
-      <Navbar />
-
-      <main className="flex flex-col w-full">
-
-        {/* 1. Hero / Intro Section (手动放置，它是特殊的) */}
-        <SectionContainer id="hero" className="pt-32">
-          <div className="hud-border bg-retro-surface p-10 max-w-2xl corner-brackets shadow-hard">
-            <h1 className="font-display text-4xl mb-4 text-retro-ink">
-              HELLO_WORLD
+    <SectionContainer id="hero" title="IDENTITY_VERIFICATION" index="00">
+      <div className="flex flex-col-reverse md:flex-row items-center gap-12">
+        
+        {/* 左侧：文字信息 */}
+        <div className="flex-1 space-y-6">
+          <div className="space-y-2">
+            <h1 className="text-5xl md:text-6xl font-display font-bold tracking-tighter text-retro-ink uppercase chromatic-text">
+              {siteConfig.profile.name}
             </h1>
-            <p className="font-mono text-retro-dim">
-              System is ready. Awaiting content modules.
+            <p className="text-xl font-mono text-retro-primary tracking-tight">
+              &gt; {siteConfig.profile.title}
             </p>
           </div>
-        </SectionContainer>
 
-        {/* 2. 动态渲染其他 Section */}
-        {siteConfig.navItems.slice(1).map((item, index) => (
-          <SectionContainer
-            key={item.id}
-            id={item.id}
-            title={item.label}
-            index={`0${index + 1}`} // 生成 01, 02 编号
-          >
-            {/* 临时占位符 */}
-            <div className="h-64 w-full border border-dashed border-retro-ink/30 flex items-center justify-center font-mono text-retro-dim/50">
-              [ MODULE: {item.label} IS LOADING... ]
-            </div>
-          </SectionContainer>
-        ))}
+          <div className="font-mono text-retro-ink/80 leading-relaxed max-w-lg text-sm md:text-base border-l-2 border-retro-primary pl-4">
+            {siteConfig.profile.bio}
+          </div>
 
-      </main>
+          {/* 装饰性数据块 */}
+          <div className="grid grid-cols-2 gap-4 text-xs font-mono text-retro-dim pt-4 opacity-70">
+            <div>LOC: {siteConfig.profile.location}</div>
+            <div>MAIL: {siteConfig.profile.email}</div>
+            <div>KEY: 0xFA4C...91B</div>
+            <div>STATUS: ONLINE</div>
+          </div>
 
-      <Footer />
-    </>
+          <div className="pt-4">
+            <Link 
+              href="/research"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-retro-ink text-retro-bg font-bold font-mono hover:bg-retro-primary hover:text-retro-ink transition-colors btn-press"
+            >
+              ACCESS_RESEARCH <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
+
+        {/* 右侧：头像 (带复古滤镜) */}
+        <div className="relative w-48 h-48 md:w-64 md:h-64 shrink-0">
+          {/* 装饰框 */}
+          <div className="absolute inset-0 border-2 border-retro-ink translate-x-2 translate-y-2 opacity-30" />
+          <div className="absolute inset-0 hud-border corner-brackets overflow-hidden bg-retro-ink">
+            {/* 这里的 grayscale 和 sepia 组合能把照片变成琥珀色调 */}
+            <Image
+              src={siteConfig.profile.avatar || "/images/avatar_placeholder.jpg"}
+              alt="Avatar"
+              fill
+              className="object-cover opacity-90 grayscale sepia hover:grayscale-0 transition-all duration-500"
+            />
+            {/* 扫描线遮罩 */}
+            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
+          </div>
+        </div>
+
+      </div>
+    </SectionContainer>
   );
 }

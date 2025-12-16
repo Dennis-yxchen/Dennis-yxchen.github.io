@@ -18,6 +18,12 @@
   /* 自定义阴影 */
   --shadow-hard: 4px 4px 0px 0px rgba(74, 59, 42, 0.1);
   --shadow-hard-sm: 2px 2px 0px 0px rgba(74, 59, 42, 0.1);
+  --shadow-button: 3px 3px 0px 0px var(--color-retro-ink); /* 按钮专用硬阴影 */
+
+  /* 新增：终端装饰三色条 (取自图片概念) */
+  --color-terminal-teal: #78B4AC;  /* 稍微褪色的青 */
+  --color-terminal-gold: #Deb841;  /* 芥末黄/金 */
+  --color-terminal-red: #9B3833;   /* 氧化铁红/褪色红 */
 
   /* --- 背景纹理定义 --- */
   
@@ -94,7 +100,7 @@
     position: relative;
     border: 1px solid color-mix(in srgb, var(--color-retro-ink), transparent 80%);
     /* 给卡片加一点背景，防止文字直接压在复杂的背景纹理上看不清 */
-    background-color: rgba(254, 253, 245, 0.6); 
+    background-color: rgba(254, 253, 245, 0.6);
     backdrop-filter: blur(2px);
   }
 
@@ -115,5 +121,30 @@
       border-bottom: 2px solid var(--color-retro-ink);
       border-right: 2px solid var(--color-retro-ink);
     }
+  }
+
+  /* 新增：色差故障效果 (Chromatic Aberration)
+     用于 Hover 或 标题，模拟镜头色散
+  */
+  .chromatic-text {
+    text-shadow:
+      -0.8px 0 rgba(255, 0, 0, 0.15),
+      0.8px 0 rgba(0, 255, 255, 0.15);
+  }
+
+  /* 新增：柔光漫反射 (Diffused Lighting)
+     让物体看起来像是在发光或被柔光照射
+  */
+  .diffused-glow {
+    filter: drop-shadow(0 0 8px rgba(255, 191, 0, 0.2));
+  }
+
+  /* 物理按钮按压效果 */
+  .btn-press {
+    transition: all 0.1s;
+  }
+  .btn-press:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px 0px var(--color-retro-ink);
   }
 }
