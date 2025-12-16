@@ -4,18 +4,15 @@ import { siteConfig } from "@/data/config";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { PlanetSketch } from "@/components/ui/PlanetSketch";
 
 export function Sidebar() {
   const pathname = usePathname();
-  // 定义一个随机的打孔图案 (1 = 实心/已打孔, 0 = 空心/未打孔)
-  const punchPattern1 = [1, 0, 1, 1, 0, 1, 0, 0];
-  const punchPattern2 = [0, 1, 1, 0, 1, 0, 1, 1];
 
   return (
-    // 侧边栏容器：固定宽度，高度 100vh，带有右边框
     <aside className="fixed top-0 left-0 h-screen w-64 bg-retro-bg border-r border-retro-ink/10 flex flex-col z-50">
-
-      {/* 1. 顶部装饰：三色条纹 (Teal, Yellow, Red) */}
+      
+      {/* 1. 顶部装饰 */}
       <div className="flex h-3 w-full border-b border-retro-ink/10">
         <div className="flex-1 bg-[var(--color-terminal-teal)]" />
         <div className="flex-1 bg-[var(--color-terminal-gold)]" />
@@ -33,40 +30,31 @@ export function Sidebar() {
         </p>
       </div>
 
-      {/* 3. 导航按钮区域 (像实验终端的控制面板) */}
+      {/* 3. 导航按钮区域 */}
       <nav className="flex-1 px-6 py-8 flex flex-col gap-4">
         {siteConfig.navItems.map((item) => {
           const isActive = pathname === item.path;
-
+          
           return (
             <Link
               key={item.path}
               href={item.path}
               className={cn(
-                // 基础样式：长方体按钮，有边框
                 "relative flex items-center gap-3 px-4 py-3 w-full",
                 "font-mono text-sm font-bold tracking-tight transition-all duration-200",
                 "border border-retro-ink bg-retro-surface",
-                "btn-press", // 引入自定义的按压效果
-
-                // 状态样式：激活 vs 未激活
-                isActive
-                  ? "shadow-button translate-x-1 bg-retro-primary text-retro-ink" // 激活：变琥珀色，保持投影
-                  : "shadow-button hover:translate-x-1 hover:bg-white text-retro-dim hover:text-retro-ink" // 未激活：悬停移动
+                "btn-press",
+                isActive 
+                  ? "shadow-button translate-x-1 bg-retro-primary text-retro-ink" 
+                  : "shadow-button hover:translate-x-1 hover:bg-white text-retro-dim hover:text-retro-ink"
               )}
             >
-              {/* 图标 */}
               <span className={cn("transition-opacity", isActive ? "opacity-100" : "opacity-60")}>
                 {item.icon}
               </span>
-
-              {/* 文字 */}
               <span>{item.label}</span>
 
-              {/* 装饰：激活状态下右侧显示一个小指示灯 */}
-              {/* {isActive && (
-                <span className="absolute right-3 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-retro-ink animate-pulse" />
-              )} */}
+              {/* 呼吸指示灯 */}
               {isActive && (
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 w-2 h-2 bg-retro-oxide rounded-full shadow-[0_0_8px_var(--color-retro-oxide)] animate-blink-slow opacity-80" />
               )}
@@ -74,14 +62,21 @@ export function Sidebar() {
           );
         })}
       </nav>
-      
+
       {/* 4. 底部状态信息 */}
-      <div className="p-6 border-t border-retro-ink/10 mt-auto">
-        <div className="font-mono text-[10px] text-retro-dim opacity-60 leading-tight">
+      <div className="p-6 border-t border-retro-ink/10 mt-auto flex justify-between items-end relative overflow-hidden">
+        
+        {/* 左侧文字 */}
+        <div className="font-mono text-[10px] text-retro-dim opacity-60 leading-tight relative z-10">
           MEM: 64KB OK<br/>
           TERM: VT-100<br/>
           V. 2.0.45
         </div>
+
+        {/* 右侧：素描风格星球组件 */}
+        {/* 调整位置使其位于右下角 */}
+        <PlanetSketch className="absolute -bottom-3 -right-0 w-28 h-28 opacity-25" />
+
       </div>
     </aside>
   );

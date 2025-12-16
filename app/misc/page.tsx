@@ -2,6 +2,7 @@ import { SectionContainer } from "@/components/ui/SectionContainer";
 import { siteConfig } from "@/data/config";
 import Image from "next/image";
 import { Disc, Play } from "lucide-react";
+import { ConstructivistArt } from "@/components/ui/ConstructivistArt";
 
 export default function MiscPage() {
   const musicItems = siteConfig.misc.filter(i => i.type === 'music');
@@ -63,7 +64,9 @@ export default function MiscPage() {
           ))}
         </div>
       </div>
-
+      {/* === 新增：页面底部的构成主义平面设计 === */}
+      {/* 放在 SectionContainer 内部的最下方 */}
+      <ConstructivistArt />
     </SectionContainer>
   );
 }
