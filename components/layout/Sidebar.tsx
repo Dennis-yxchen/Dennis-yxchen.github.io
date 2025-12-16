@@ -7,6 +7,9 @@ import { cn } from "@/lib/utils";
 
 export function Sidebar() {
   const pathname = usePathname();
+  // 定义一个随机的打孔图案 (1 = 实心/已打孔, 0 = 空心/未打孔)
+  const punchPattern1 = [1, 0, 1, 1, 0, 1, 0, 0];
+  const punchPattern2 = [0, 1, 1, 0, 1, 0, 1, 1];
 
   return (
     // 侧边栏容器：固定宽度，高度 100vh，带有右边框
@@ -71,9 +74,9 @@ export function Sidebar() {
           );
         })}
       </nav>
-
+      
       {/* 4. 底部状态信息 */}
-      <div className="p-6 border-t border-retro-ink/10">
+      <div className="p-6 border-t border-retro-ink/10 mt-auto">
         <div className="font-mono text-[10px] text-retro-dim opacity-60 leading-tight">
           MEM: 64KB OK<br/>
           TERM: VT-100<br/>

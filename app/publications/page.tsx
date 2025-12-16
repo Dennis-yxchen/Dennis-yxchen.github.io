@@ -2,6 +2,7 @@ import { SectionContainer } from "@/components/ui/SectionContainer";
 import { siteConfig } from "@/data/config";
 import { FileText, Code, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { AtomicDivider } from "@/components/ui/AtomicDivider";
 
 export default function PublicationsPage() {
   return (
@@ -60,6 +61,7 @@ export default function PublicationsPage() {
           </div>
         ))}
       </div>
+      <AtomicDivider className="mt-16 opacity-50 scale-75" />
     </SectionContainer>
   );
 }

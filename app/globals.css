@@ -202,4 +202,8 @@
   .animate-spin-slow {
     animation: spin 3s linear infinite;
   }
+
+  .animate-pulse-slow {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
 }

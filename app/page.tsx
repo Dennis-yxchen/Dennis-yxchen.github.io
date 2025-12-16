@@ -3,6 +3,7 @@ import { siteConfig } from "@/data/config";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { AtomicDivider } from "@/components/ui/AtomicDivider";
 
 export default function HomePage() {
   return (
@@ -68,6 +69,9 @@ export default function HomePage() {
           </div>
         </div>
 
+      </div>
+      <div className="mt-12">
+        <AtomicDivider className="scale-75"/>
       </div>
     </SectionContainer>
   );
