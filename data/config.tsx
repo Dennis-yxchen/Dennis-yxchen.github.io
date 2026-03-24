@@ -1,5 +1,5 @@
 import { SiteConfig } from "@/app/types";
-import { Cpu, FileText, Layers, Radio } from "lucide-react";
+import { Cpu, FileText, Layers, Camera } from "lucide-react";
 
 export const siteConfig: SiteConfig = {
   // === 1. 个人档案 ===
@@ -24,9 +24,9 @@ export const siteConfig: SiteConfig = {
   // 想要添加新板块？在这里加一行即可
   navItems: [
     { label: "ID.CARD", path: "/", icon: <Cpu size={18} /> }, // 首页
-    { label: "RESEARCH", path: "/research", icon: <Layers size={18} /> },
+    { label: "PROJECT", path: "/research", icon: <Layers size={18} /> },
     { label: "PUBLICATIONS", path: "/publications", icon: <FileText size={18} /> },
-    { label: "MISC.DATA", path: "/misc", icon: <Radio size={18} /> },
+    { label: "GALLERY", path: "/misc", icon: <Camera size={18} /> },
   ],
 
   // === 3. 研究项目 (Methodology) ===
@@ -72,22 +72,6 @@ export const siteConfig: SiteConfig = {
     },
   ],
 
-  // === 5. 杂项 (音乐/摄影) ===
-  misc: [
-    {
-      id: "music-01",
-      type: "music",
-      title: "Synthwave Mix 2077",
-      src: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // 替换为你喜欢的 YouTube 链接
-      meta: "Lofi Girl",
-    },
-    {
-      id: "photo-01",
-      type: "photo",
-      title: "Tokyo Night",
-      src: "/images/photo_1.jpg",
-      meta: "Sony A7R, 35mm",
-      description: "Cyberpunk vibes in Shinjuku.",
-    },
-  ],
+  // === 5. 摄影画廊 ===
+  gallery: [],
 };

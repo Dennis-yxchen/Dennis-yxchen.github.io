@@ -22,10 +22,6 @@ export default function ResearchPage() {
                   className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 grayscale group-hover:grayscale-0"
                 />
               )}
-              {/* 装饰性编号 */}
-              <div className="absolute top-2 right-2 bg-retro-bg border border-retro-ink px-1 text-[10px] font-mono z-10">
-                FIG_0{idx + 1}
-              </div>
             </div>
 
             {/* 文字区域 */}

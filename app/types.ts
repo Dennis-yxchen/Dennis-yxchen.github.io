@@ -44,14 +44,15 @@ export interface Publication {
   highlight?: boolean; // 是否高亮显示（例如 Best Paper）
 }
 
-// 5. 杂项 (音乐/照片)
-export interface MiscItem {
+// 5. 摄影画廊
+export interface GalleryItem {
   id: string;
-  type: 'music' | 'photo';
   title: string;
-  src: string;         // 图片路径 或 视频/音频链接
+  src: string;
   description?: string;
-  meta?: string;       // 额外信息 (如 "Shot on Kodak Portra 400" 或 歌手名)
+  meta?: string;       // 拍摄参数 (如 "Sony A7R IV · 35mm · f/1.8")
+  location?: string;
+  date?: string;
 }
 
 // 6. 网站总配置
@@ -60,5 +61,5 @@ export interface SiteConfig {
   navItems: NavItem[];
   research: ResearchProject[];
   publications: Publication[];
-  misc: MiscItem[];
+  gallery: GalleryItem[];
 }

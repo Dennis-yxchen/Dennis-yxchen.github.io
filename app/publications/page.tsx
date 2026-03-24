@@ -13,10 +13,9 @@ export default function PublicationsPage() {
             key={pub.id}
             className={cn(
               "relative flex flex-col md:flex-row gap-4 p-4 border transition-all hover:bg-white/40",
-              // 如果是 Highlight 论文，边框是实线且更深；普通论文是虚线
               pub.highlight 
                 ? "border-retro-ink bg-retro-surface shadow-hard" 
-                : "border-retro-ink/20 border-dashed"
+                : "border-retro-ink/60 bg-retro-surface shadow-hard"
             )}
           >
             {/* 左侧：年份和会议 */}

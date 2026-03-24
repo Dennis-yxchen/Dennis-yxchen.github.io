@@ -88,30 +88,11 @@ export function ConstructivistArt() {
 
         {/* 5. 装饰性技术数据 (Data Overlay) */}
         <g opacity="0.7">
-          {/* 左上角数据块 */}
-          <rect x="40" y="40" width="10" height="10" fill="var(--color-retro-ink)" />
-          <text x="60" y="50" fontFamily="var(--font-mono)" fontSize="10" fill="var(--color-retro-ink)">
-            FIG. 19-57
-          </text>
-
           {/* 右侧垂直标尺 */}
           <line x1="550" y1="50" x2="550" y2="300" stroke="var(--color-retro-ink)" strokeWidth="1" />
           <line x1="545" y1="50" x2="555" y2="50" stroke="var(--color-retro-ink)" strokeWidth="1" />
           <line x1="545" y1="175" x2="555" y2="175" stroke="var(--color-retro-ink)" strokeWidth="1" />
           <line x1="545" y1="300" x2="555" y2="300" stroke="var(--color-retro-ink)" strokeWidth="1" />
-          
-          {/* 俄语/未来主义文字装饰 */}
-          <text 
-            x="530" 
-            y="280" 
-            fontFamily="var(--font-mono)" 
-            fontSize="10" 
-            fill="var(--color-retro-ink)" 
-            transform="rotate(-90 530 280)"
-            letterSpacing="2"
-          >
-            науки и прогресса
-          </text>
         </g>
       </svg>
     </div>
