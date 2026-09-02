@@ -29,7 +29,7 @@ News
 Current research interests
 ===
 - Self-improving AI agents that learn from experience, feedback, and reusable skills
-- Recursive self-improvement in agentic systems, including how agents refine their own strategies and capabilities
+- Recursive self-improvement in agentic systems
 - Memory systems for AI agents
 - LLM-based agent simulation across different domains and aspects
 
