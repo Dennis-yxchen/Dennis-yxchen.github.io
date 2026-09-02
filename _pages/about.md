@@ -13,28 +13,30 @@ Feel free to contact <a href="mailto:yxchen02@connect.hku.hk">me</a> :-)
 
 ---
 
-Current research interests
-===
-- Equipping foundation models with advanced capabilities (including social interaction, planning)
-- Enhancing models' abilities like reasoning and problem-solving through methods such as multi-agent systems and new computational approaches
-- Applying power of AI in real-world scenarios
-
-In the past, I also conducted some research on:
-- Graph Machine Learning (augmentation methods)
-- Machine Learning in Bioinformatics (infection classification)
-- Large Language Model Agents (Desire-Driven Agent, D2A)
-
----
-
 News
 ===
 - [07/2026] <a href="https://open-space.cloud/">OpenSpace v2</a>, the skill management layer for AI agents, was released.
 - [07/2026] Our work <a href="https://aclanthology.org/2026.findings-acl.396/">Law in Silico</a> was published in Findings of ACL 2026.
+- [03/2026] We released <a href="https://github.com/HKUDS/OpenSpace">OpenSpace v1</a>, enabling AI agents to learn, evolve, and share reusable skills across tasks.
 - [03/2026] We released <a href="https://github.com/HKUDS/FastCode">FastCode</a>, a fast and cost-efficient framework for repository-scale code understanding and reasoning.
 - [12/2025] We released <a href="https://github.com/HKUDS/AI-Trader">AI-Trader</a>, a benchmark and platform for autonomous agents in real-time financial markets.
 - [12/2025] Our work on evaluating LLM-agent generalization in mixed-motive scenarios using <a href="https://proceedings.neurips.cc/paper_files/paper/2025/hash/d0251bbbc0288f241b878775ba1735dc-Abstract-Datasets_and_Benchmarks_Track.html">Concordia</a> was published at the NeurIPS 2025 Datasets and Benchmarks Track.
 - [01/2025] Our work <a href="https://openreview.net/forum?id=3ms8EQY7f8">Simulating Human-like Daily Activities with Desire-driven Autonomy (D2A)</a> was accepted at ICLR 2025.
 - [12/2024] Our team (BIGAI NLCo) ranked #9 in the NeurIPS 2024 Concordia Contest.
+
+---
+
+Current research interests
+===
+- Self-improving AI agents that learn from experience, feedback, and reusable skills
+- Recursive self-improvement in agentic systems, including how agents refine their own strategies and capabilities
+- Memory systems for AI agents
+- LLM-based agent simulation across different domains and aspects
+
+In the past, I also conducted some research on:
+- Graph Machine Learning (augmentation methods)
+- Machine Learning in Bioinformatics (infection classification)
+- Large Language Model Agents (Desire-Driven Agent, D2A)
 
 ---
 
