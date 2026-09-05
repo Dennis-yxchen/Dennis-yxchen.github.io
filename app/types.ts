@@ -45,14 +45,18 @@ export interface Publication {
 }
 
 // 5. 摄影画廊
+export interface GalleryPhoto {
+  src: string;
+  caption?: string;
+}
+
 export interface GalleryItem {
   id: string;
   title: string;
-  src: string;
+  cover: string;
   description?: string;
-  meta?: string;       // 拍摄参数 (如 "Sony A7R IV · 35mm · f/1.8")
-  location?: string;
-  date?: string;
+  meta?: string;
+  photos: GalleryPhoto[];
 }
 
 // 6. 网站总配置

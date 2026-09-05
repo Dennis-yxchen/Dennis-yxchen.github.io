@@ -5,7 +5,7 @@ import { ExternalLink } from "lucide-react";
 
 export default function ResearchPage() {
   return (
-    <SectionContainer id="research" title="RESEARCH_PROTOCOLS" index="01">
+    <SectionContainer id="research" title="OPEN_SOURCE_PROJECT" index="01">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {siteConfig.research.map((project, idx) => (
           <div 
@@ -19,7 +19,7 @@ export default function ResearchPage() {
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 grayscale group-hover:grayscale-0"
+                  className="object-contain object-bottom p-4 opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 grayscale group-hover:grayscale-0"
                 />
               )}
             </div>
@@ -27,9 +27,17 @@ export default function ResearchPage() {
             {/* 文字区域 */}
             <div className="space-y-2">
               <div className="flex justify-between items-start">
-                <h3 className="font-display text-xl font-bold text-retro-ink group-hover:text-retro-primary transition-colors">
-                  {project.title}
-                </h3>
+                {project.link ? (
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:underline underline-offset-4 decoration-retro-primary/50">
+                    <h3 className="font-display text-xl font-bold text-retro-ink group-hover:text-retro-primary transition-colors">
+                      {project.title}
+                    </h3>
+                  </a>
+                ) : (
+                  <h3 className="font-display text-xl font-bold text-retro-ink group-hover:text-retro-primary transition-colors">
+                    {project.title}
+                  </h3>
+                )}
                 {project.link && (
                   <a href={project.link} target="_blank" className="text-retro-dim hover:text-retro-accent">
                     <ExternalLink size={16} />

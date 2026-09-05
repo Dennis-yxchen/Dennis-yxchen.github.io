@@ -6,7 +6,7 @@ import { AtomicDivider } from "@/components/ui/AtomicDivider";
 
 export default function PublicationsPage() {
   return (
-    <SectionContainer id="publications" title="DATA_ARCHIVE" index="02">
+    <SectionContainer id="publications" title="RESEARCH_ARCHIVE" index="02">
       <div className="flex flex-col gap-4">
         {siteConfig.publications.map((pub) => (
           <div 

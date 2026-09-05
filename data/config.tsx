@@ -4,17 +4,17 @@ import { Cpu, FileText, Layers, Camera } from "lucide-react";
 export const siteConfig: SiteConfig = {
   // === 1. 个人档案 ===
   profile: {
-    name: "YOUR_NAME",
-    title: "Researcher / Developer",
-    email: "your.email@example.com",
+    name: "Dennis",
+    title: "MPhil · Researcher / Developer",
+    email: "ddddennis.chan@gmail.com",
     github: "https://github.com/yourname",
-    location: "Internet",
-    avatar: "/images/avatar_placeholder.jpg", // 请在 public/images 放一张图片
+    location: "World",
+    avatar: "/images/avatar.jpg",
     bio: (
       <>
-        Hello, I am a researcher interested in <b className="text-retro-primary">Machine Learning</b> and <b className="text-retro-primary">Human-Computer Interaction</b>. 
+        Hello, I am a researcher interested in <b className="text-retro-primary">LLM Agent</b> (coding, multi-agent) and <b className="text-retro-primary">RAG systems</b>. 
         <br /><br />
-        Currently working on <b>Retrieval-Augmented Generation (RAG)</b> systems and building minimalist digital gardens.
+        Currently exploring autonomous coding agents and retrieval-augmented generation architectures.
         Welcome to my digital archive.
       </>
     ),
@@ -33,16 +33,19 @@ export const siteConfig: SiteConfig = {
   research: [
     {
       id: "proj-01",
-      title: "Project Alpha: Neural Rendering",
-      description: "Investigating the efficiency of neural radiance fields in real-time environments. Proposed a new sparse voxel octree structure.",
-      techStack: ["Python", "CUDA", "PyTorch"],
-      image: "/images/project_1.jpg", // 记得在 public/images 里放图，否则会裂开
+      title: "FastCode",
+      description: "A token-efficient framework for fast, accurate, and cost-effective code understanding at scale.",
+      techStack: [],
+      image: "/images/gemini-svg.svg",
+      link: "https://github.com/HKUDS/FastCode",
     },
     {
       id: "proj-02",
-      title: "Agent Memory Systems",
-      description: "Designing long-term memory modules for autonomous agents using vector databases and knowledge graphs.",
-      techStack: ["LangChain", "Neo4j", "TypeScript"],
+      title: "OpenSpace",
+      description: "The self-evolving engine where every task makes every agent smarter and more cost-efficient.",
+      techStack: [],
+      image: "/images/Remove background project.png",
+      link: "https://github.com/HKUDS/OpenSpace",
     },
   ],
 
@@ -73,5 +76,29 @@ export const siteConfig: SiteConfig = {
   ],
 
   // === 5. 摄影画廊 ===
-  gallery: [],
+  gallery: [
+    {
+      id: "album-01",
+      title: "Tokyo Nights",
+      cover: "/images/gallery/tokyo_01.jpg",
+      description: "Neon-soaked streets after midnight.",
+      meta: "2024 · Tokyo, Japan",
+      photos: [
+        { src: "/images/gallery/tokyo_01.jpg", caption: "Shinjuku Crossing" },
+        { src: "/images/gallery/tokyo_02.jpg", caption: "Kabukichō Alley" },
+        { src: "/images/gallery/tokyo_03.jpg", caption: "Shibuya Rain" },
+      ],
+    },
+    {
+      id: "album-02",
+      title: "Analog Days",
+      cover: "/images/gallery/analog_01.jpg",
+      description: "Shot on film. Portra 400 & Kodak Gold.",
+      meta: "2023 · Various",
+      photos: [
+        { src: "/images/gallery/analog_01.jpg", caption: "Morning Light" },
+        { src: "/images/gallery/analog_02.jpg", caption: "The Old Bridge" },
+      ],
+    },
+  ],
 };

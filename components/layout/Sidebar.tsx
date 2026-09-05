@@ -23,7 +23,7 @@ export function Sidebar() {
       <div className="p-8 pb-4">
         <h1 className="font-display text-2xl font-bold tracking-tighter text-retro-ink uppercase chromatic-text">
           {siteConfig.profile.name.split(" ")[0]}
-          <span className="opacity-40">_LAB</span>
+          <span className="opacity-40">_ARCH</span>
         </h1>
         <p className="font-mono text-xs text-retro-dim mt-2">
           :: SYSTEM ONLINE ::

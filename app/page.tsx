@@ -38,7 +38,6 @@ export default function HomePage() {
           <div className="grid grid-cols-2 gap-4 text-xs font-mono text-retro-dim pt-4 opacity-70">
             <div>LOC: {siteConfig.profile.location}</div>
             <div>MAIL: {siteConfig.profile.email}</div>
-            <div>KEY: 0xFA4C...91B</div>
             <div>STATUS: ONLINE</div>
           </div>
 
@@ -56,15 +55,13 @@ export default function HomePage() {
         <div className="relative w-48 h-48 md:w-64 md:h-64 shrink-0">
           {/* 装饰框 */}
           <div className="absolute inset-0 border-2 border-retro-ink translate-x-2 translate-y-2 opacity-30" />
-          <div className="absolute inset-0 hud-border corner-brackets overflow-hidden bg-retro-ink">
-            {/* 这里的 grayscale 和 sepia 组合能把照片变成琥珀色调 */}
+          <div className="absolute inset-0 corner-brackets overflow-hidden border border-retro-ink/20">
             <Image
               src={siteConfig.profile.avatar || "/images/avatar_placeholder.jpg"}
               alt="Avatar"
               fill
               className="object-cover opacity-90 grayscale sepia hover:grayscale-0 transition-all duration-500"
             />
-            {/* 扫描线遮罩 */}
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
           </div>
         </div>
