@@ -45,7 +45,7 @@ export function ConstructivistArt() {
         {/* 青色梯形 (模拟苏联海报中的动态方块) */}
         <path 
           d="M 100 280 L 500 280 L 450 320 L 50 320 Z" 
-          fill="var(--color-terminal-teal)" 
+          fill="var(--color-retro-primary)"
           opacity="0.6"
           style={{ mixBlendMode: "multiply" }} 
         />
@@ -83,7 +83,7 @@ export function ConstructivistArt() {
         />
 
         {/* 卫星/电子 (不再闪烁，而是作为一个稳定的点) */}
-        <circle cx="245" cy="155" r="6" fill="var(--color-terminal-red)" />
+        <circle cx="245" cy="155" r="6" fill="var(--color-retro-primary)" />
         <circle cx="245" cy="155" r="3" fill="var(--color-retro-surface)" />
 
         {/* 5. 装饰性技术数据 (Data Overlay) */}

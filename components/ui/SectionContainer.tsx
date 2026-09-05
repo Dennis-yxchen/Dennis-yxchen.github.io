@@ -20,23 +20,20 @@ export function SectionContainer({
     <section
       id={id}
       className={cn(
-        "relative min-h-screen w-full max-w-5xl mx-auto px-6 py-24 flex flex-col justify-center",
+        "relative mx-auto w-full max-w-6xl py-12 sm:py-16 lg:py-20",
         className
       )}
     >
-      {/* 装饰性标题：工程图纸风格 */}
       {title && (
-        <div className="absolute top-12 left-6 md:left-0 flex items-center gap-4 opacity-40 select-none pointer-events-none">
+        <div className="mb-10 flex items-center gap-3">
           {index && (
-            <span className="font-mono text-sm font-bold tracking-widest text-retro-primary">
-              {index}.
+            <span className="font-mono text-xs font-semibold tracking-[0.14em] text-retro-primary">
+              {index}
             </span>
           )}
-          <span className="font-display font-bold tracking-widest uppercase text-retro-ink text-sm">
+          <h1 className="font-display text-sm font-semibold uppercase tracking-[0.14em] text-retro-ink">
             {title}
-          </span>
-          {/* 装饰线 */}
-          <div className="h-px w-24 bg-retro-ink/30" />
+          </h1>
         </div>
       )}
 

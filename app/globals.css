@@ -1,209 +1,196 @@
 @import "tailwindcss";
 
-/* Tailwind v4 配置区域 */
 @theme {
-  /* 颜色定义 */
-  --color-retro-bg: #FEFDF5;
-  --color-retro-surface: #FFFBEB;
-  --color-retro-primary: #FFBF00;
-  --color-retro-ink: #4A3B2A;
-  --color-retro-dim: #8C7E6A;
-  --color-retro-accent: #0D9488;
-  --color-retro-signal: #DC2626;
+  --color-retro-bg: #fefdf5;
+  --color-retro-surface: #fffbea;
+  --color-retro-primary: #ffbf00;
+  --color-retro-primary-soft: #f6e7ad;
+  --color-retro-ink: #4a3b2a;
+  --color-retro-dim: #8c7e6a;
+  --color-retro-accent: #674f35;
+  --color-retro-signal: #5d4630;
+  --color-retro-oxide: #725236;
+  --color-terminal-teal: #78b4ac;
+  --color-terminal-gold: #deb841;
+  --color-terminal-red: #9b3833;
 
-  /* 字体定义 */
   --font-display: var(--font-space-grotesk), sans-serif;
   --font-mono: var(--font-jetbrains-mono), monospace;
 
-  /* 自定义阴影 */
-  --shadow-hard: 4px 4px 0px 0px rgba(74, 59, 42, 0.1);
-  --shadow-hard-sm: 2px 2px 0px 0px rgba(74, 59, 42, 0.1);
-  --shadow-button: 3px 3px 0px 0px var(--color-retro-ink); /* 按钮专用硬阴影 */
-
-  /* 新增：终端装饰三色条 (取自图片概念) */
-  --color-terminal-teal: #78B4AC;  /* 稍微褪色的青 */
-  --color-terminal-gold: #Deb841;  /* 芥末黄/金 */
-  --color-terminal-red: #9B3833;   /* 氧化铁红/褪色红 */
-  /* 3. 新增一个氧化红颜色（比 Signal Red 更暗、更旧） */
-  --color-retro-oxide: #B85C50;
-
-  /* --- 背景纹理定义 --- */
-  
-  /* 1. CRT 扫描线 (Scanlines) - 横向条纹 */
-  /* 这里调整为 4px 一个循环，50%透明，50%有一点点颜色 */
-  --bg-scanlines: linear-gradient(
-    to bottom,
-    transparent 50%,
-    rgba(74, 59, 42, 0.03) 50% /* 极淡的线条，不干扰阅读 */
-  );
-  
-  /* 2. 屏幕暗角 (Vignette) - 四周变暗 */
-  --bg-vignette: radial-gradient(
-    circle at center,
-    transparent 60%,
-    rgba(74, 59, 42, 0.12) 120% /* 稍微加深一点点，让它更明显 */
-  );
-
-  /* 3. 零星噪点 (Noise) */
-  /* 使用 SVG 滤镜生成随机颗粒 */
-  --bg-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
-
+  --shadow-hard: 4px 4px 0 0 rgba(74, 59, 42, 0.24);
+  --shadow-hard-sm: 2px 2px 0 0 rgba(74, 59, 42, 0.24);
+  --shadow-button: 3px 3px 0 0 rgba(74, 59, 42, 0.92);
 }
 
-/* 基础样式层 */
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    background-color: var(--color-retro-bg);
+    min-height: 100vh;
+    background: var(--color-retro-bg);
     color: var(--color-retro-ink);
-    font-family: var(--font-mono);
+    font-family: var(--font-display);
+    font-size: 16px;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-
-    /* --- 图层叠加顺序 (关键) --- */
-    /* Layer 1 (最上层): 暗角 (压住所有东西，统一色调)
-       Layer 2 (中间层): 扫描线 (模拟屏幕表面的纹理)
-       Layer 3 (最下层): 噪点 (模拟底层的材质/电子杂讯)
-    */
-    background-image: 
-      var(--bg-vignette), 
-      var(--bg-scanlines),
-      var(--bg-noise);
-
-    /* --- 对应的尺寸 --- */
-    background-size: 
-      100% 100%,     /* Vignette: 铺满 */
-      100% 6px,      /* Scanlines: 4px 循环 */
-      200px 200px;   /* Noise: 200px 循环 (太小会显得重复，太大会模糊) */
-
-    background-attachment: fixed;
   }
 
   ::selection {
-    background-color: var(--color-retro-ink);
-    color: var(--color-retro-primary);
+    background-color: var(--color-retro-primary-soft);
+    color: var(--color-retro-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-retro-primary);
+    outline-offset: 3px;
   }
 
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 9px;
   }
+
   ::-webkit-scrollbar-track {
-    background-color: var(--color-retro-bg);
+    background: var(--color-retro-bg);
   }
+
   ::-webkit-scrollbar-thumb {
-    background-color: rgba(74, 59, 42, 0.2);
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(74, 59, 42, 0.4);
+    background: color-mix(in srgb, var(--color-retro-ink), transparent 72%);
+    border: 2px solid var(--color-retro-bg);
   }
 }
 
-/* 工具类层 */
 @layer utilities {
   .hud-border {
-    position: relative;
-    border: 1px solid color-mix(in srgb, var(--color-retro-ink), transparent 80%);
-    /* 给卡片加一点背景，防止文字直接压在复杂的背景纹理上看不清 */
-    background-color: rgba(254, 253, 245, 0.6);
-    backdrop-filter: blur(2px);
+    border: 1px solid color-mix(in srgb, var(--color-retro-ink), transparent 78%);
+    background: var(--color-retro-surface);
   }
 
   .corner-brackets {
-    &::before {
-      content: '';
-      position: absolute;
-      top: -1px; left: -1px;
-      width: 8px; height: 8px;
-      border-top: 2px solid var(--color-retro-ink);
-      border-left: 2px solid var(--color-retro-ink);
-    }
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -1px; right: -1px;
-      width: 8px; height: 8px;
-      border-bottom: 2px solid var(--color-retro-ink);
-      border-right: 2px solid var(--color-retro-ink);
-    }
+    position: relative;
   }
 
-  /* 新增：色差故障效果 (Chromatic Aberration)
-     用于 Hover 或 标题，模拟镜头色散
-  */
+  .corner-brackets::before,
+  .corner-brackets::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .corner-brackets::before {
+    top: -1px;
+    left: -1px;
+    border-top: 2px solid var(--color-retro-primary);
+    border-left: 2px solid var(--color-retro-primary);
+  }
+
+  .corner-brackets::after {
+    right: -1px;
+    bottom: -1px;
+    border-right: 2px solid var(--color-retro-primary);
+    border-bottom: 2px solid var(--color-retro-primary);
+  }
+
   .chromatic-text {
-    text-shadow:
-      -0.8px 0 rgba(255, 0, 0, 0.15),
-      0.8px 0 rgba(0, 255, 255, 0.15);
+    text-shadow: none;
   }
 
-  /* 新增：柔光漫反射 (Diffused Lighting)
-     让物体看起来像是在发光或被柔光照射
-  */
   .diffused-glow {
-    filter: drop-shadow(0 0 8px rgba(255, 191, 0, 0.2));
+    filter: drop-shadow(0 0 11px rgba(222, 184, 65, 0.25));
   }
 
-  /* 物理按钮按压效果 */
   .btn-press {
-    transition: all 0.1s;
+    box-shadow: var(--shadow-button);
+    transition:
+      color 140ms ease,
+      background-color 140ms ease,
+      border-color 140ms ease,
+      box-shadow 140ms ease;
   }
+
+  .btn-press:hover {
+    box-shadow:
+      var(--shadow-button),
+      0 0 18px rgba(255, 191, 0, 0.16);
+  }
+
   .btn-press:active {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0px 0px var(--color-retro-ink);
+    box-shadow: 1px 1px 0 0 rgba(74, 59, 42, 0.86);
+  }
+
+  .btn-press-sm {
+    box-shadow: 2px 2px 0 0 rgba(74, 59, 42, 0.78);
+    transition:
+      color 140ms ease,
+      background-color 140ms ease,
+      border-color 140ms ease,
+      box-shadow 140ms ease;
+  }
+
+  .btn-press-sm:hover {
+    box-shadow:
+      2px 2px 0 0 rgba(74, 59, 42, 0.78),
+      0 0 14px rgba(255, 191, 0, 0.13);
+  }
+
+  .btn-press-sm:active {
+    box-shadow: 1px 1px 0 0 rgba(74, 59, 42, 0.7);
+  }
+
+  .amber-glow {
+    box-shadow:
+      0 0 0 1px rgba(255, 191, 0, 0.1),
+      0 0 24px rgba(255, 191, 0, 0.18);
+  }
+
+  .panel-lift {
+    box-shadow: 4px 4px 0 0 rgba(74, 59, 42, 0.34);
+    transition:
+      border-color 160ms ease,
+      box-shadow 160ms ease,
+      transform 160ms ease;
+  }
+
+  .panel-lift:hover {
+    box-shadow: 5px 5px 0 0 rgba(74, 59, 42, 0.48);
+    transform: translate(-1px, -1px);
+  }
+
+  .animate-blink-slow,
+  .animate-spin-slow,
+  .animate-pulse-slow {
+    animation: none;
   }
 }
 
-/* ... 之前的代码 ... */
-
-/* 新增：自定义动画关键帧 */
-@keyframes retro-fade-in {
-  0% {
+@keyframes quiet-fade-in {
+  from {
     opacity: 0;
-    transform: translateY(8px); /* 稍微向上位移，模拟数据上载 */
-    filter: blur(2px); /* 刚出现时有点模糊，像聚焦过程 */
+    transform: translateY(4px);
   }
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0);
   }
 }
 
-@keyframes cursor-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-@keyframes breathing-light {
-  0%, 100% { opacity: 0.4; transform: scale(0.95); } /* 暗的时候稍微缩小 */
-  50% { opacity: 1; transform: scale(1.05); }        /* 亮的时候稍微膨胀（光晕感） */
-}
-
-@keyframes scanline-scan {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 0% 100%; }
-}
-
-/* 实用工具类 */
 @layer utilities {
-  /* ... 之前的类 ... */
-
-  /* 页面切换动画类 */
   .animate-retro-fade {
-    /* 0.4秒完成，使用 ease-out 让结束时更平缓 */
-    animation: retro-fade-in 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation: quiet-fade-in 240ms ease-out both;
   }
+}
 
-  /* 2. 重写闪烁类：更慢（3s），更平滑 (ease-in-out) */
-  .animate-blink-slow {
-    animation: breathing-light 3s ease-in-out infinite;
-  }
-
-  /* 缓慢旋转 (用于音乐图标) */
-  .animate-spin-slow {
-    animation: spin 3s linear infinite;
-  }
-
-  .animate-pulse-slow {
-  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

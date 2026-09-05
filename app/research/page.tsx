@@ -1,67 +1,102 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import { ArrowUpRight, FileText, Github } from "lucide-react";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { siteConfig } from "@/data/config";
-import Image from "next/image";
-import { ExternalLink } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description: "Open-source projects by Yuxuan Chen in AI agents, code reasoning, and autonomous financial agents.",
+};
 
 export default function ResearchPage() {
   return (
-    <SectionContainer id="research" title="OPEN_SOURCE_PROJECT" index="01">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {siteConfig.research.map((project, idx) => (
-          <div 
-            key={project.id} 
-            className="group relative flex flex-col gap-4"
+    <SectionContainer id="projects" title="Open-source projects" index="02">
+      <p className="mb-10 max-w-3xl text-base leading-8 text-retro-dim">
+        I contribute to open-source systems spanning self-improving AI agents,
+        repository-scale code reasoning, and autonomous agents in financial markets.
+      </p>
+
+      <div className="grid gap-6 lg:grid-cols-2">
+        {siteConfig.research.map((project) => (
+          <article
+            key={project.id}
+            className="panel-lift group flex flex-col border border-retro-ink/20 bg-retro-surface hover:border-retro-ink/45"
           >
-            {/* 图片区域：带边框和切角 */}
-            <div className="relative aspect-video w-full hud-border corner-brackets bg-retro-surface overflow-hidden shadow-hard group-hover:shadow-hard-sm transition-all">
-              {project.image && (
+            {project.image ? (
+              <div className="relative h-52 overflow-hidden border-b border-retro-ink/12 bg-[#f6f3e8]">
                 <Image
                   src={project.image}
-                  alt={project.title}
+                  alt={`${project.title} project artwork`}
                   fill
-                  className="object-contain object-bottom p-4 opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 grayscale group-hover:grayscale-0"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="diffused-glow object-contain p-7"
                 />
-              )}
-            </div>
-
-            {/* 文字区域 */}
-            <div className="space-y-2">
-              <div className="flex justify-between items-start">
-                {project.link ? (
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:underline underline-offset-4 decoration-retro-primary/50">
-                    <h3 className="font-display text-xl font-bold text-retro-ink group-hover:text-retro-primary transition-colors">
-                      {project.title}
-                    </h3>
-                  </a>
-                ) : (
-                  <h3 className="font-display text-xl font-bold text-retro-ink group-hover:text-retro-primary transition-colors">
-                    {project.title}
-                  </h3>
-                )}
-                {project.link && (
-                  <a href={project.link} target="_blank" className="text-retro-dim hover:text-retro-accent">
-                    <ExternalLink size={16} />
-                  </a>
-                )}
               </div>
-              
-              <p className="text-sm font-mono text-retro-dim leading-relaxed">
+            ) : (
+              <div className="flex h-36 items-end border-b border-retro-ink/12 bg-retro-primary-soft/45 p-6">
+                <span className="font-mono text-sm uppercase tracking-[0.18em] text-retro-dim">
+                  Agent benchmark / Financial markets
+                </span>
+              </div>
+            )}
+
+            <div className="flex flex-1 flex-col p-6">
+              <p className="font-mono text-xs uppercase tracking-[0.13em] text-retro-primary">
+                {project.role}
+              </p>
+              <h2 className="mt-2 text-2xl font-bold tracking-tight text-retro-ink">
+                {project.title}
+              </h2>
+              <p className="mt-3 text-[0.98rem] leading-7 text-retro-dim">
                 {project.description}
               </p>
 
-              {/* 技术栈标签 */}
-              <div className="flex flex-wrap gap-2 pt-2">
-                {project.techStack.map((tech) => (
-                  <span 
-                    key={tech} 
-                    className="px-2 py-0.5 text-[10px] font-mono border border-retro-ink/30 text-retro-ink/70"
+              <ul className="mt-5 flex flex-wrap gap-2" aria-label={`${project.title} topics`}>
+                {project.topics.map((topic) => (
+                  <li
+                    key={topic}
+                    className="border border-retro-ink/15 px-2.5 py-1 font-mono text-xs text-retro-dim"
                   >
-                    {tech}
-                  </span>
+                    {topic}
+                  </li>
                 ))}
+              </ul>
+
+              <div className="mt-auto flex flex-wrap gap-2 pt-7">
+                {project.links.website && (
+                  <a
+                    href={project.links.website}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-press-sm inline-flex items-center gap-2 border border-retro-ink bg-retro-surface px-3 py-2 text-sm font-medium hover:bg-retro-primary-soft"
+                  >
+                    Website <ArrowUpRight size={14} />
+                  </a>
+                )}
+                {project.links.code && (
+                  <a
+                    href={project.links.code}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-press-sm inline-flex items-center gap-2 border border-retro-ink bg-retro-surface px-3 py-2 text-sm font-medium hover:bg-retro-primary-soft"
+                  >
+                    <Github size={14} /> Code
+                  </a>
+                )}
+                {project.links.paper && (
+                  <a
+                    href={project.links.paper}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-press-sm inline-flex items-center gap-2 border border-retro-ink bg-retro-surface px-3 py-2 text-sm font-medium hover:bg-retro-primary-soft"
+                  >
+                    <FileText size={14} /> Paper
+                  </a>
+                )}
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </SectionContainer>

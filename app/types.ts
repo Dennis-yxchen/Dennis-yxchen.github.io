@@ -10,13 +10,23 @@ export interface NavItem {
 // 2. 个人基础信息
 export interface Profile {
   name: string;
+  displayName: string;
   title: string;
   email: string;
   github?: string;
-  twitter?: string; // 或者 X
+  googleScholar?: string;
+  linkedin?: string;
+  instagram?: string;
   location?: string;
-  bio: ReactNode;   // 支持 JSX，可以在自我介绍里加粗/换行
-  avatar?: string;  // 头像路径
+  affiliation: string;
+  affiliationUrl?: string;
+  bio: ReactNode;
+  avatar?: string;
+}
+
+export interface NewsItem {
+  date: string;
+  content: ReactNode;
 }
 
 // 3. 研究项目 / Methodology
@@ -24,9 +34,14 @@ export interface ResearchProject {
   id: string;
   title: string;
   description: string;
-  techStack: string[]; // 例如 ["Python", "PyTorch", "Next.js"]
-  image?: string;      // 图片路径 /images/xxx.png
-  link?: string;       // 项目链接
+  role?: string;
+  topics: string[];
+  image?: string;
+  links: {
+    website?: string;
+    code?: string;
+    paper?: string;
+  };
 }
 
 // 4. 论文发表
@@ -36,12 +51,30 @@ export interface Publication {
   authors: string[];
   venue: string;       // 会议或期刊名 (如 "CVPR 2025")
   year: string;
+  description?: string;
   links: {
     pdf?: string;
     code?: string;
-    demo?: string;
+    project?: string;
   };
-  highlight?: boolean; // 是否高亮显示（例如 Best Paper）
+}
+
+export interface EducationItem {
+  institution: string;
+  program: string;
+  period?: string;
+}
+
+export interface ExperienceItem {
+  title: string;
+  institution: string;
+  period?: string;
+  details: string[];
+}
+
+export interface FriendItem {
+  name: string;
+  url: string;
 }
 
 // 5. 摄影画廊
@@ -63,7 +96,12 @@ export interface GalleryItem {
 export interface SiteConfig {
   profile: Profile;
   navItems: NavItem[];
+  news: NewsItem[];
+  researchInterests: string[];
   research: ResearchProject[];
   publications: Publication[];
+  education: EducationItem[];
+  experience: ExperienceItem[];
+  friends: FriendItem[];
   gallery: GalleryItem[];
 }

@@ -1,83 +1,134 @@
 "use client";
 
-import { siteConfig } from "@/data/config";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import {
+  Github,
+  GraduationCap,
+  Instagram,
+  Linkedin,
+  Mail,
+} from "lucide-react";
+import { siteConfig } from "@/data/config";
 import { cn } from "@/lib/utils";
-import { PlanetSketch } from "@/components/ui/PlanetSketch";
 
-export function Sidebar() {
+const socialLinkClass =
+  "group inline-flex w-full items-center gap-3 py-1.5 text-sm text-retro-dim transition-colors hover:text-retro-ink";
+
+const socialIconClass =
+  "text-retro-ink/45 transition-colors group-hover:text-retro-primary";
+
+function Navigation({ mobile = false }: { mobile?: boolean }) {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed top-0 left-0 h-screen w-64 bg-retro-bg border-r border-retro-ink/10 flex flex-col z-50">
-      
-      {/* 1. 顶部装饰 */}
-      <div className="flex h-3 w-full border-b border-retro-ink/10">
-        <div className="flex-1 bg-[var(--color-terminal-teal)]" />
-        <div className="flex-1 bg-[var(--color-terminal-gold)]" />
-        <div className="flex-1 bg-[var(--color-terminal-red)]" />
-      </div>
+    <nav
+      aria-label="Primary navigation"
+      className={cn(
+        mobile ? "flex gap-1 overflow-x-auto px-5 pb-3" : "flex flex-col gap-1"
+      )}
+    >
+      {siteConfig.navItems.map((item, index) => {
+        const isActive = pathname === item.path;
 
-      {/* 2. LOGO 区域 */}
-      <div className="p-8 pb-4">
-        <h1 className="font-display text-2xl font-bold tracking-tighter text-retro-ink uppercase chromatic-text">
-          {siteConfig.profile.name.split(" ")[0]}
-          <span className="opacity-40">_ARCH</span>
-        </h1>
-        <p className="font-mono text-xs text-retro-dim mt-2">
-          :: SYSTEM ONLINE ::
-        </p>
-      </div>
-
-      {/* 3. 导航按钮区域 */}
-      <nav className="flex-1 px-6 py-8 flex flex-col gap-4">
-        {siteConfig.navItems.map((item) => {
-          const isActive = pathname === item.path;
-          
-          return (
-            <Link
-              key={item.path}
-              href={item.path}
-              className={cn(
-                "relative flex items-center gap-3 px-4 py-3 w-full",
-                "font-mono text-sm font-bold tracking-tight transition-all duration-200",
-                "border border-retro-ink bg-retro-surface",
-                "btn-press",
-                isActive 
-                  ? "shadow-button translate-x-1 bg-retro-primary text-retro-ink" 
-                  : "shadow-button hover:translate-x-1 hover:bg-white text-retro-dim hover:text-retro-ink"
-              )}
-            >
-              <span className={cn("transition-opacity", isActive ? "opacity-100" : "opacity-60")}>
-                {item.icon}
+        return (
+          <Link
+            key={item.path}
+            href={item.path}
+            className={cn(
+              "group flex shrink-0 items-center gap-3 border transition-colors",
+              mobile
+                ? "px-3 py-2 text-sm"
+                : "px-3 py-2.5 text-[0.95rem]",
+              isActive
+                ? cn("border-retro-ink bg-retro-primary text-retro-ink", !mobile && "btn-press-sm")
+                : "border-transparent text-retro-dim hover:border-retro-ink/15 hover:bg-retro-surface hover:text-retro-ink"
+            )}
+            aria-current={isActive ? "page" : undefined}
+          >
+            <span className={cn(isActive ? "text-retro-ink" : "text-retro-dim/75")}>
+              {item.icon}
+            </span>
+            <span>{item.label}</span>
+            {!mobile && (
+              <span className="ml-auto font-mono text-[11px] text-retro-dim/60">
+                {String(index).padStart(2, "0")}
               </span>
-              <span>{item.label}</span>
+            )}
+          </Link>
+        );
+      })}
+    </nav>
+  );
+}
 
-              {/* 呼吸指示灯 */}
-              {isActive && (
-                <span className="absolute right-3 top-1/2 -translate-y-1/2 w-2 h-2 bg-retro-oxide rounded-full shadow-[0_0_8px_var(--color-retro-oxide)] animate-blink-slow opacity-80" />
-              )}
-            </Link>
-          );
-        })}
-      </nav>
+export function Sidebar() {
+  return (
+    <>
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-retro-ink/15 bg-retro-bg/95 backdrop-blur md:hidden">
+        <div className="flex h-1.5 w-full" aria-hidden="true">
+          <div className="flex-1 bg-[var(--color-terminal-teal)]" />
+          <div className="flex-1 bg-[var(--color-terminal-gold)]" />
+          <div className="flex-1 bg-[var(--color-terminal-red)]" />
+        </div>
+        <div className="flex items-center justify-between px-5 py-4">
+          <Link href="/" className="font-display text-lg font-bold tracking-tight">
+            Yuxuan Chen<span className="diffused-glow text-retro-primary">.</span>
+          </Link>
+          <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-retro-dim">
+            AI Agents
+          </span>
+        </div>
+        <Navigation mobile />
+      </header>
 
-      {/* 4. 底部状态信息 */}
-      <div className="p-6 border-t border-retro-ink/10 mt-auto flex justify-between items-end relative overflow-hidden">
-        
-        {/* 左侧文字 */}
-        <div className="font-mono text-[10px] text-retro-dim opacity-60 leading-tight relative z-10">
-          MEM: 64KB OK<br/>
-          TERM: VT-100<br/>
-          V. 2.0.45
+      <aside className="fixed inset-y-0 left-0 z-40 hidden w-72 flex-col border-r border-retro-ink/15 bg-retro-bg md:flex">
+        <div className="flex h-2 w-full" aria-hidden="true">
+          <div className="flex-1 bg-[var(--color-terminal-teal)]" />
+          <div className="flex-1 bg-[var(--color-terminal-gold)]" />
+          <div className="flex-1 bg-[var(--color-terminal-red)]" />
         </div>
 
-        {/* 右侧：素描风格星球组件 */}
-        {/* 调整位置使其位于右下角 */}
-        <PlanetSketch className="absolute -bottom-3 -right-0 w-28 h-28 opacity-25" />
+        <div className="px-8 pb-7 pt-10">
+          <Link href="/" className="block">
+            <p className="font-display text-2xl font-bold leading-tight tracking-tight text-retro-ink">
+              Yuxuan Chen<span className="diffused-glow text-retro-primary">.</span>
+            </p>
+          </Link>
+        </div>
 
-      </div>
-    </aside>
+        <div className="px-5">
+          <Navigation />
+        </div>
+
+        <div className="mx-8 mt-7 border-t border-retro-ink/15 pt-5">
+          <div className="flex flex-col items-start gap-0.5">
+            {siteConfig.profile.github && (
+              <a className={socialLinkClass} href={siteConfig.profile.github} target="_blank" rel="noreferrer">
+                <Github size={14} className={socialIconClass} /> GitHub
+              </a>
+            )}
+            {siteConfig.profile.googleScholar && (
+              <a className={socialLinkClass} href={siteConfig.profile.googleScholar} target="_blank" rel="noreferrer">
+                <GraduationCap size={14} className={socialIconClass} /> Scholar
+              </a>
+            )}
+            {siteConfig.profile.linkedin && (
+              <a className={socialLinkClass} href={siteConfig.profile.linkedin} target="_blank" rel="noreferrer">
+                <Linkedin size={14} className={socialIconClass} /> LinkedIn
+              </a>
+            )}
+            {siteConfig.profile.instagram && (
+              <a className={socialLinkClass} href={siteConfig.profile.instagram} target="_blank" rel="noreferrer">
+                <Instagram size={14} className={socialIconClass} /> Instagram
+              </a>
+            )}
+            <a className={socialLinkClass} href={`mailto:${siteConfig.profile.email}`}>
+              <Mail size={14} className={socialIconClass} /> Email
+            </a>
+          </div>
+        </div>
+      </aside>
+    </>
   );
 }
